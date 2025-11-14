@@ -1,17 +1,30 @@
 import { GameState } from "@/config/game-config";
 import ContinueButton from "./UI/ContinueButton"
-import GameTry from "./GameTry"
 import "./game.css"
+import ResultsHeader from "./UI/ResultsHeader";
 
 
 const CurrentResult = ({ setGameInfo, currentTry }) => {
     return (
         <>
-          <div className="result-header">
-            <h3 className="result-title">Ваши результаты</h3>
-          </div>  
+          <ResultsHeader></ResultsHeader>
           <div className="result-text-container">
-            <GameTry currentTry={currentTry}></GameTry>
+            <table className="result-table">
+              <tbody>
+                <tr>
+                  <th scope="row">Текущий результат</th>
+                  <td>{currentTry.score}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Верных ответов</th>
+                  <td>{currentTry.rightAnswers} из {currentTry.answersCount}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Точность ответов</th>
+                  <td>{(currentTry.rightAnswers * 100) / currentTry.answersCount}</td>
+                </tr>
+              </tbody>
+            </table>
             <ContinueButton text="Далее" onClick={ () => {setGameInfo((prev) => ({...prev, state: GameState.ALL_RESULTS}))}}></ContinueButton>
           </div>
         </>
