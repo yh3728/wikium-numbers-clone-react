@@ -2,7 +2,7 @@ import { GameState } from "@/config/game-config";
 import ContinueButton from "./UI/ContinueButton"
 import "./game.css"
 
-const Menu = ({setGameInfo}) => {
+const Menu = ({updateState}) => {
     return(
         <div className="menu">
             <div className="menu-header">
@@ -10,7 +10,7 @@ const Menu = ({setGameInfo}) => {
                 <p className="menu-title">Тренажер на внимательность</p>
             </div>
             <div className="menu-text-container">
-                <ContinueButton onClick={ () => {setGameInfo((prev) => ({...prev, state: GameState.TUTORIAL}))}} text="Далее"></ContinueButton>
+                <ContinueButton onClick={ () => {updateState(GameState.TUTORIAL)}} text="Далее"></ContinueButton>
             </div>
         </div>
     )

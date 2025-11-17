@@ -4,7 +4,8 @@ import "./game.css"
 import ResultsHeader from "./UI/ResultsHeader";
 
 
-const CurrentResult = ({ setGameInfo, currentTry }) => {
+const CurrentResult = ({ updateState, info }) => {
+    const {currentTry} = info;
     return (
         <>
           <ResultsHeader></ResultsHeader>
@@ -21,11 +22,11 @@ const CurrentResult = ({ setGameInfo, currentTry }) => {
                 </tr>
                 <tr>
                   <th scope="row">Точность ответов</th>
-                  <td>{(currentTry.rightAnswers * 100) / currentTry.answersCount}</td>
+                  <td>{(currentTry.rightAnswers * 100) / currentTry.answersCount}%</td>
                 </tr>
               </tbody>
             </table>
-            <ContinueButton text="Далее" onClick={ () => {setGameInfo((prev) => ({...prev, state: GameState.ALL_RESULTS}))}}></ContinueButton>
+            <ContinueButton text="Далее" onClick={ () => {updateState(GameState.ALL_RESULTS)}}></ContinueButton>
           </div>
         </>
     )

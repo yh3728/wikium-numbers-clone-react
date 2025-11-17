@@ -4,15 +4,21 @@ import ResultsHeader from "./UI/ResultsHeader";
 import GameTry from "./GameTry"
 import "./game.css"
 
-const AllResults = ({ setGameInfo, tries }) => {
+const AllResults = ({ info, updateState }) => {
+    const {tries} = info;
+    tries.sort((a, b) => b.score - a.score);
     return (
         <>
             <ResultsHeader></ResultsHeader>
             <div className="result-text-container">
                 <div>
-                    
+                    {
+                        tries.map((gameTry, i) => (
+                            <GameTry key={i} gameTry={gameTry} />
+                        ))
+                    }
                 </div>
-                <ContinueButton text="Заново" onClick={ () => {setGameInfo((prev) => ({...prev, bonusX: 1, score: 0, currentLvlNumber: 1, state: GameState.MENU}))}}></ContinueButton>
+                <ContinueButton text="Заново" onClick={ () => {updateState(GameState.MENU)}}></ContinueButton>
             </div>
         </>
     )

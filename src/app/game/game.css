@@ -80,13 +80,14 @@ h3{
     color: white;
     text-align: center;
     font-size: large;
-    grid-area: 3 / 2;
+    margin-top: 10px;
 }
 
 .tutorial-finger{
     position: absolute;
     width: 20%;
-    translate: -130% 200%;
+    translate: -180% 230%;
+    rotate: -15deg;
 }
 
 .task-box{
@@ -168,7 +169,12 @@ h3{
 }
 
 .result-text-item{
-    padding-bottom: 40px;
+    display: flex;
+    gap: 20px;
+}
+
+.result-text-item-date{
+    color: grey;
 }
 
 .result-table{
@@ -182,4 +188,37 @@ h3{
 
 .result-table td{
     font-weight: bold;
+}
+
+
+.spinning p {
+    animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(35deg); }
+    25%   { transform: rotate(0deg); }
+    50%   { transform: rotate(-35deg); }
+    75%   { transform: rotate(0deg); }
+    100%   { transform: rotate(35deg); }
+}
+
+.scaling{
+    animation: scale 0.5s linear infinite;
+}
+
+@keyframes scale {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1); }
+    100% { transform: scale(0.8); }
+}
+
+.opacity{
+    animation: opacity 1s linear infinite;
+}
+
+@keyframes opacity {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
 }

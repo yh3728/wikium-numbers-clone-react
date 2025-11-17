@@ -1,32 +1,19 @@
-import { GameState } from "@/config/game-config";
-import AnswerButton from "./UI/AnswerButton";
+import {GameState, tutorialLevel} from "@/config/game-config";
 import "./game.css"
 import "../../../public/finger.svg"
+import ButtonsArea from "@/app/game/UI/ButtonsArea";
 
-const Tutorial = ({setGameInfo}) => {
+const Tutorial = ({ updateState}) => {
 
     const onClickHandle = () => {
-        setGameInfo((prev) => ({...prev, state: GameState.PLAYING}));
+        updateState(GameState.PLAYING);
     }
-
-    const nums = [1, 2, 3, 4, 5, 6]
-    const currentGridTemplateColumns = "repeat(3, 1fr)";
 
     return(
         <div className="tutorial" onClick={onClickHandle}>
-            <div className="task-box">
-                <p>Найдите указанное число</p>
-                <p>4</p>
-            </div>
             <img src="finger.svg" className="tutorial-finger"></img>
-            <div className="buttons-container" style={{gridTemplateColumns: currentGridTemplateColumns}}>
-                {
-                    nums.map((num) => (
-                        <AnswerButton key={num} number={num}></AnswerButton>
-                    ))
-                }
-                <p className="tutorial-text">Нажмите на экран, чтобы продолжить</p>
-            </div>
+            <ButtonsArea level={tutorialLevel}></ButtonsArea>
+            <p className="tutorial-text">Нажмите на экран, чтобы продолжить</p>
         </div>
     )
 }
